@@ -1,0 +1,7 @@
+{
+    "name": "StarBank",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "front-end",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose"
+}
