@@ -1,19 +1,32 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { useTranslation } from 'react-i18next';
 import i18n from "../../i18n";
+import { useTranslation } from 'react-i18next';
+import { motion } from "framer-motion";
+import axios from 'axios';
+
+import { FaArrowLeft } from "react-icons/fa";
 
 import Logo from "../../../public/logos/logo.png";
 import UsaFlag from "../../../public/images/usa-flag.png";
-import BrazilFlag from "../../../public/images/brazil-flag.png";
+import ChinaFlag from "../../../public/images/china-flag.png";
+import IndiaFlag from "../../../public/images/india-flag.png";
 import SpainFlag from "../../../public/images/spain-flag.png";
+import BrazilFlag from "../../../public/images/brazil-flag.png";
+import RussiaFlag from "../../../public/images/russia-flag.png";
+import FranceFlag from "../../../public/images/france-flag.png";
+import GermanyFlag from "../../../public/images/germany-flag.png";
+import JapanFlag from "../../../public/images/japan-flag.png";
+import ItalyFlag from "../../../public/images/italy-flag.png";
 
+import SbStock from "../../../public/images/sb-stock.png";
 import SbBuilding from "../../../public/images/sb-building.png";
 
 import TransferPage from "./transfer";
@@ -33,15 +46,24 @@ import LogoutIcon from "../../../public/icons/logout.png";
 
 import EyeOpen from "../../../public/icons/eye-open.png";
 import EyeClosed from "../../../public/icons/eye-closed.png";
-import { FaArrowLeft } from "react-icons/fa";
-import { BiSolidUpArrow } from "react-icons/bi";
 
-import axios from 'axios';
 import { useUserContext } from "../../context/UserContext";
 
 export default function Home() {
+  const router = useRouter();
+
   const lng = i18n.language;
-  const flag = lng === 'en' ? UsaFlag : lng === 'pt-BR' ? BrazilFlag : SpainFlag;
+  const flag = lng === 'en' ? UsaFlag
+  : lng === 'zh' ? ChinaFlag
+  : lng === 'hi' ? IndiaFlag
+  : lng === 'es' ? SpainFlag
+  : lng === 'pt-BR' ? BrazilFlag
+  : lng === 'ru' ? RussiaFlag
+  : lng === 'fr' ? FranceFlag
+  : lng === 'de' ? GermanyFlag
+  : lng === 'ja' ? JapanFlag
+  : lng === 'it' ? ItalyFlag
+  : UsaFlag;
   const { t } = useTranslation();
   
   const [activePage, setActivePage] = useState<string | null>(null);
@@ -49,40 +71,52 @@ export default function Home() {
   const [time, setTime] = useState(new Date());
   const [balance, setBalance] = useState<number>(0);
   const [showBalance, setShowBalance] = useState<boolean>(false);
-  const [aboutStocks, setAboutStocks] = useState(false);
-  const [aboutLoans, setAboutLoans] = useState(false);
+  const [aboutStocks, setAboutStocks] = useState<boolean>(false);
+  const stockList = [
+    { name: 'SB', value: 5000, DY: 0.50 },
+  ];
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const [inputQuantities, setInputQuantities] = useState<Record<string, number>>({});
+  const [aboutLoans, setAboutLoans] = useState<boolean>(false);
+  const [value, setValue] = useState<number>(0);
+  const [ir, setIr] = useState<number>(0);
+  const [months, setMonths] = useState<number>(0);
+  const [remainingMonths, setRemainingMonths] = useState<number>(0);
+  const [monthlyInstallment, setMonthlyInstallment] = useState<number>(0);
 
   const { emailContext } = useUserContext();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
   
-    const fetchBalance = async () => {
-      await handleBalance();
-    };
-  
-    fetchBalance();
-  
-    return () => clearInterval(interval);
-  }, []);
-
-  const router = useRouter();
-
   const changeLanguage = () => {
     const lng = i18n.language;
     if (lng === 'en') {
+      i18n.changeLanguage('zh');
+    } else if (lng === 'zh') {
+      i18n.changeLanguage('hi');
+    } else if (lng === 'hi') {
+      i18n.changeLanguage('es');
+    } else if (lng === 'es') {
       i18n.changeLanguage('pt-BR');
     } else if (lng === 'pt-BR') {
-      i18n.changeLanguage('es');
+      i18n.changeLanguage('ru');
+    } else if (lng === 'ru') {
+      i18n.changeLanguage('fr');
+    } else if (lng === 'fr') {
+      i18n.changeLanguage('de');
+    } else if (lng === 'de') {
+      i18n.changeLanguage('ja');
+    } else if (lng === 'ja') {
+      i18n.changeLanguage('it');
     } else {
       i18n.changeLanguage('en');
-    };
+    }
   };
   
   const handleShowBalance = () => {
     setShowBalance(!showBalance);
+  };
+  
+  const fetchBalance = async () => {
+    await handleBalance();
   };
 
   const handleBalance = async () => {
@@ -90,35 +124,147 @@ export default function Home() {
       alert(t('sessionExpired'));
       router.push('/');
       return;
-    }
-  
+    };
+    
     try {
-      const response = await axios.get("http://localhost:8080/users");
+      const response = await axios.get("http://localhost:8080/user");
       const allUsers = response.data;
       const currentUser = allUsers.find((n: any) => n.email === emailContext);
-  
+      
       if (currentUser) {
         setBalance(currentUser.balance);
       } else {
         alert(t('userNotFound'));
-      }
+      };
+
     } catch (error) {
-      console.error(error);
-    }
+      alert(t('errorFetchingBalance'));
+    };
   };
   
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+      fetchBalance();
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   const handleAboutStocks = () => {
     setAboutStocks(!aboutStocks);
   };
+
+  const handleBuyStock = async (stock: { name: string; value: number }) => {
+    const qty = inputQuantities[stock.name];
+
+    if (!qty || qty <= 0) {
+      alert(t('stockQuantity'));
+      return;
+    };
+
+    try {
+      await axios.post('http://localhost:8080/stock/buy', {
+        value: stock.value,
+        quantity: qty,
+      });
+
+      setQuantities(prev => ({ ...prev, [stock.name]: (prev[stock.name] || 0) + qty }));
+      setInputQuantities(prev => ({ ...prev, [stock.name]: 0 }));
+      alert(t('stockBought'));
+    } catch {
+      alert(t('stockBoughtError'));
+    };
+  };
+
+  const handleSellStock = async (stock: { name: string; value: number }) => {
+    const qty = inputQuantities[stock.name];
+    
+    if (!qty || qty <= 0 || (quantities[stock.name] || 0) < qty) {
+      alert(t('stockQuantity'));
+      return;
+    };
+
+    try {
+      await axios.post('http://localhost:8080/stock/sell', {
+        value: stock.value,
+        quantity: qty,
+      });
+
+      setQuantities(prev => ({ ...prev, [stock.name]: prev[stock.name] - qty }));
+      setInputQuantities(prev => ({ ...prev, [stock.name]: 0 }));
+      alert(t('stockSold'));
+    } catch {
+      alert(t('stockSoldError'));
+    };
+  };
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      for (const stock of stockList) {
+        const qty = quantities[stock.name];
+
+        if (qty > 0) {
+          await axios.put('http://localhost:8080/stock/DY', {
+            value: stock.value,
+            quantity: qty,
+            DY: stock.DY
+          });
+        };
+      };
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [quantities]);
 
   const handleAboutLoans = () => {
     setAboutLoans(!aboutLoans);
   };
 
-  const handleLogout = () => {
-    router.push('/');
+  const handleRequestLoan = async (loanValue: number, loanIr: number, loanMonths: number) => {
+    try {
+      setValue(loanValue);
+      setIr(loanIr);
+      setMonths(loanMonths);
+      setRemainingMonths(loanMonths);
+      
+      const { data } = await axios.post("http://localhost:8080/loan/request", {
+        value: loanValue,
+        ir: loanIr,
+        months: loanMonths
+      });
+      
+      setMonthlyInstallment(data.monthlyInstallment);
+    } catch {
+      alert(t("loanRequestedError"));
+    };
   };
+  
+  useEffect(() => {
+    if (monthlyInstallment > 0 && remainingMonths > 0) {
+      const interval = setInterval(async () => {
+        try {
+          await axios.put("http://localhost:8080/loan/repay", null, {
+            params: { installment: monthlyInstallment }
+          });
+          setRemainingMonths(prev => prev - 1);
+        } catch (error) {
+          alert(t("loanRepaymentError"));
+        };
+      }, 1000);
+      
+      return () => clearInterval(interval);
+    };
+  }, [monthlyInstallment, remainingMonths]);
 
+  const handleLogout = async () => {
+    await axios.post("http://localhost:8080/auth/logout", {
+      email: emailContext,
+    });
+
+    router.push("/");
+  };
+  
   const renderPage = () => {
     switch (activePage) {
       case 'transfer':
@@ -197,53 +343,65 @@ export default function Home() {
                 </main>
               ) : (
                 <section className="pb-[140px] g:pb-5 xl:pb-0 px-5 lg:px-0 gap-6 grid grid-cols-1 md:grid-cols-2 auto-rows-fr">
-                  <motion.div
-                    key="homeStocks"
-                    initial={{ opacity: 0}}
-                    animate={{ opacity: 1}}
-                    exit={{ opacity: 0}}
-                    transition={{ duration: 0.6, ease: "easeInOut"}}
-                    className="flex flex-col justify-between items-center gap-5 bg-secondary lg:bg-primary rounded-[25px]"
-                  >
-                    <div className="flex justify-between w-full">
-                      <div className="sm:mt-3 ml-6 flex flex-row items-center text-[20px] sm:text-[25px] gap-1 font-medium">
-                        <h1 className="shine-text">Alphabet |</h1>
-                        <h1 className="text-sbgreen">GOOGL</h1>
+                  {stockList.map(stock => (
+                    <motion.div
+                      key={stock.name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="flex flex-col justify-between items-center gap-5 bg-secondary lg:bg-primary rounded-[25px]"
+                    >
+                      <div className="flex justify-between w-full">
+                          <div className="sm:mt-3 ml-6 flex flex-row items-center text-[20px] sm:text-[25px] gap-1 font-medium">
+                            <h1 className="shine-text">{stock.name}</h1>
+                          </div>
+
+                          <button onClick={handleAboutStocks} className="text-[35px] font-medium bg-sbgreen bg-opacity-50 active:bg-opacity-25 transition duration-300 ease w-[50px] rounded-bl-[25px] rounded-tr-[25px]">i</button>
                       </div>
 
-                      <button onClick={() => handleAboutStocks()} className="text-[35px] font-medium bg-sbgreen bg-opacity-50 active:bg-opacity-25 transiton duration-300 ease w-[50px] rounded-bl-[25px] rounded-tr-[25px]">i</button>
-                    </div>
+                      <div className="flex w-full sm:gap-10 md:gap-0 xl:gap-10 my-3 sm:mt-5 sm:mb-10 h-[70px] sm:h-[120px] justify-center items-center px-[10px] sm:px-[15px]">
+                          <div className="flex flex-col justify-center items-center pl-[5px] pr-[20px]">
+                              <div className="flex gap-1 font-medium text-[25px] sm:text-[30px] xl:text-[40px]">
+                                <h1>{stock.value}</h1>
+                              </div>
 
-                    <div className="flex w-full my-3 sm:mt-5 sm:mb-10 h-[120px] justify-center items-center px-[10px] sm:px-[15px]">
-                      <div className="flex flex-col justify-center items-center pl-[5px] pr-[20px]">
-                        <div className="flex gap-1 font-medium text-[27px] sm:text-[30px] xl:text-[40px]">
-                          <h1 className="text-sbgreen">{t('currency')}</h1>
-                          <h1>179,44</h1>
-                        </div>
+                              <div className="flex flex-row items-center text-[15px] md:text-[20px] xl:text-[20px] gap-1 font-medium">
+                                  <h1 className="shine-text">{t('DY')}</h1>
+                                  <h1 className="text-sbgreen">{stock.DY}</h1>
+                              </div>
+                          </div>
 
-                        <div className="flex flex-row items-center text-[13px] sm:text-[14px] xl:text-[19px] gap-1 font-medium">
-                          <h1 className="shine-text">{t('volume')}</h1>
-                          <h1 className="text-sbgreen">350M</h1>
-                        </div>
+                          <div className="overflow-hidden w-[200px] lg:w-[280px] h-[100px] xl:h-[160px] border-[2px] rounded-[10px] border-sbgreen flex items-center justify-center">
+                              <Image src={SbStock} alt="Stock image" className="h-full w-full object-contain scale-[160%] sm:scale-[195%]" />
+                          </div>
                       </div>
 
-                      <div className="h-[120%] xl:h-[130%] w-full border-[2px] rounded-[10px] border-sbgreen">
-                        <h1>IMAGEM</h1>
-                      </div>
-                    </div>
+                      <div className="translate-y-[-5px] sm:translate-y-[-15px] translate-x-[-5px] w-full flex justify-center sm:gap-10 lg:gap-0 xl:justify-between items-center scale-[72%] sm:scale-[100%]">
+                          <div className="flex items-center ml-7 mr-[20px] sm:mr-0 gap-1 text-[#00FF37] font-medium">
+                            <h1 className="block lg:hidden xl:block sm:translate-y-[3px] text-[25px]">{quantities[stock.name] || 0}</h1>
+                          </div>
 
-                    <div className="translate-y-[-5px] sm:translate-y-[-15px] translate-x-[-5px] w-full flex justify-center sm:justify-between items-center scale-[72%] sm:scale-[100%]">
-                      <div className="flex items-center ml-7 mr-[60px] sm:mr-0 gap-1 text-[#00FF37] font-medium">
-                          <BiSolidUpArrow className="text-[15px]" />
-                          <h1 className="sm:translate-y-[3px] text-[25px]">0.05%</h1>
-                      </div>
+                          <div className="flex gap-3 h-[50px]">
+                              <input
+                                type="number"
+                                min="1"
+                                value={inputQuantities[stock.name] || ''}
+                                onChange={e => setInputQuantities({ ...inputQuantities, [stock.name]: Number(e.target.value) })}
+                                className="text-center w-[60px] text-[16px] border-[2px] border-tertiary bg-transparent rounded-[15px] focus:outline-none focus:border-sbgreen transition duration-300 ease" 
+                              />
 
-                      <div className="flex gap-3 h-[50px]">
-                        <input type="text" className="text-center w-[90px] text-[16px] border-[2px] border-tertiary bg-transparent rounded-[15px] focus:outline-none focus:border-sbgreen transition duration-300 ease" />
-                        <button className="mr-[8px] bg-sbgreen rounded-[15px] w-[100px] sm:w-[80px] text-[17px] font-medium bg-opacity-50 active:bg-opacity-25 transition duration-300 ease">{t('buy')}</button>
+                              <button onClick={() => handleSellStock(stock)} className="bg-red-600 rounded-[13px] w-[70px] text-[15px] font-medium bg-opacity-50 active:bg-opacity-25 transition duration-300 ease">
+                                {t('sell')}
+                              </button>
+
+                              <button onClick={() => handleBuyStock(stock)} className="mr-[8px] bg-sbgreen rounded-[13px] w-[70px] text-[15px] font-medium bg-opacity-50 active:bg-opacity-25 transition duration-300 ease">
+                                {t('buy')}
+                              </button>
+                          </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  ))}
 
                   <motion.div
                     key="homeAboutUs"
@@ -282,20 +440,20 @@ export default function Home() {
                   >
                     <div className="flex gap-2 text-[20px] sm:text-[30px] md:text-[22px] xl:text-[30px] mt-5">
                       <h2 className="text-sbgreen font-medium">24</h2>
-                      <h2 className="text-tertiary font-light">{t('months')}</h2>
-                      <h2 className="text-tertiary font-light">+</h2>
-                      <h2 className="text-sbgreen font-medium">42,75%</h2>
-                      <h2 className="text-tertiary font-light">{t('taxes')}</h2>
+                      <h2 className="shine-text font-light">{t('months')}</h2>
+                      <h2 className="shine-text font-light">+</h2>
+                      <h2 className="text-sbgreen font-medium">8%</h2>
+                      <h2 className="shine-text font-light">{t('IR')}</h2>
                     </div>
 
                     <div className="flex gap-2 text-[35px] sm:text-[45px] mb-5 sm:mb-9 font-semibold">
-                      <h1 className="text-sbgreen">{t('currency')}</h1>
+                      <h1 className="text-sbgreen">$</h1>
                       <h1>5.000,00</h1>
                     </div>
 
                     <div className="flex w-full justify-between">
                       <span className="hidden sm:block"></span>
-                      <button className="ml-[45px] translate-y-[-15px] sm:translate-y-[-25px] translate-x-[-30px] sm:translate-x-0 rounded-[15px] px-5 xl:px-9 py-2 text-[25px] sm:text-[30px] font-medium bg-sbgreen bg-opacity-50 active:bg-opacity-25 transition duration-300 ease">{t('withdraw')}</button>
+                      <button onClick={() => handleRequestLoan(5000, 8, 24)} disabled={remainingMonths > 0} className={`ml-[45px] translate-y-[-15px] sm:translate-y-[-25px] translate-x-[-30px] sm:translate-x-0 rounded-[15px] px-5 xl:px-9 py-2 text-[25px] sm:text-[30px] font-medium active:bg-opacity-25 transition duration-300 ease ${remainingMonths > 0 ? 'bg-sbgreen bg-opacity-25 cursor-not-allowed' : 'bg-sbgreen bg-opacity-50'}`}>{t(remainingMonths > 0 ? 'withdrawn' : 'withdraw')}</button>
                       <button onClick={() => handleAboutLoans()} className="text-[35px] font-medium bg-sbgreen bg-opacity-50 active:bg-opacity-25 transiton duration-300 ease w-[50px] rounded-br-[25px] rounded-tl-[25px]">i</button>
                     </div>
                   </motion.div>
@@ -328,11 +486,11 @@ export default function Home() {
             </header>
 
             <div className="flex flex-col justify-center">
-              <button onClick={() => setActivePage('')} className={`mb-[30px] py-1 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[30px] hover:text-sbgreen ${['transfer', 'loans', 'stocks', 'historic', 'settings'].includes(activePage ?? '') ? 'text-tertiary border-transparent' : 'border-sbgreen text-sbgreen'} transition duration-300 ease`}>{t('home')}</button>
-              <button onClick={() => setActivePage('transfer')} className={`mb-[30px] py-1 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[30px] hover:text-sbgreen ${activePage === 'transfer' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('transfer')}</button>
-              <button onClick={() => setActivePage('loans')} className={`mb-[30px] py-1 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[30px] hover:text-sbgreen ${activePage === 'loans' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('loans')}</button>
-              <button onClick={() => setActivePage('stocks')} className={`mb-[30px] py-1 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[30px] hover:text-sbgreen ${activePage === 'stocks' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('stocks')}</button>
-              <button onClick={() => setActivePage('historic')} className={`mb-[30px] py-1 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[30px] hover:text-sbgreen ${activePage === 'historic' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('historic')}</button>
+              <button onClick={() => setActivePage('')} className={`mb-[25px] py-2 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[25px] hover:text-sbgreen ${['transfer', 'loans', 'stocks', 'historic', 'settings'].includes(activePage ?? '') ? 'text-tertiary border-transparent' : 'border-sbgreen text-sbgreen'} transition duration-300 ease`}>{t('home')}</button>
+              <button onClick={() => setActivePage('transfer')} className={`mb-[25px] py-2 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[25px] hover:text-sbgreen ${activePage === 'transfer' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('transfer')}</button>
+              <button onClick={() => setActivePage('loans')} className={`mb-[25px] py-2 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[25px] hover:text-sbgreen ${activePage === 'loans' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('loans')}</button>
+              <button onClick={() => setActivePage('stocks')} className={`mb-[25px] py-2 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[25px] hover:text-sbgreen ${activePage === 'stocks' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('stocks')}</button>
+              <button onClick={() => setActivePage('historic')} className={`mb-[25px] py-2 px-[55px] mx-[0px] bg-secondary border-[2px] rounded-xl text-[25px] hover:text-sbgreen ${activePage === 'historic' ? 'border-sbgreen text-sbgreen' : 'text-tertiary border-transparent'} transition duration-300 ease`}>{t('historic')}</button>
             </div>
 
             <section className="flex flex-col gap-6">
@@ -352,10 +510,11 @@ export default function Home() {
           <section className="sm:mx-[19px]">
             <div className="flex my-[10px] sm:my-[18px] scale-[90%] sm:scale-[100%] lg:mt-[20px] items-center justify-between lg:justify-end">
               <button onClick={() => setActivePage('settings')} className={`${activePage === 'settings' ? 'opacity-100' : 'opacity-50'} transition duration-300 ease`}><Image src={SettingsIcon} alt="Settings icon" className="block lg:hidden w-[40px] h-[40px]" /></button>
+              
+              <Link href="/" className="opacity-30 hover:opacity-100 transition duration-300 ease"><Image src={Logo} alt="StarBank logo" className="block lg:hidden w-[140px] h-[28px]" /></Link>
 
               <div className="flex items-center gap-5 sm:gap-7">
                 <button onClick={() => changeLanguage()} className="opacity-50 hover:opacity-100 transition duration-300 ease active:opacity-50"><Image src={flag} alt="Country flag" className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]" /></button>
-                <button className="border-[3px] border-sbgreen rounded-full opacity-50 hover:opacity-100 transition duration-300 ease active:opacity-50"><Image src={flag} alt="Profile picture" className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]" /></button>
               </div>
             </div>
             
@@ -379,10 +538,10 @@ export default function Home() {
               transition={{ duration: 0.6, ease: "easeInOut"}}
               className="flex mt-5 sm:mt-0 items-center justify-center lg:justify-start gap-2 sm:gap-3 font-medium text-[25px] sm:text-[45px] lg:mt-[-30px] mb-10"
             >
-              <h1 className="text-sbgreen">{t('currency')}</h1>
-              <h1>{showBalance ? '•••••••' : balance}</h1>
+              <h1 className="text-sbgreen">$</h1>
+              <h1>{showBalance ? '•••••••' : balance.toFixed(2)}</h1>
 
-              <Image src={showBalance ? EyeClosed : EyeOpen} alt="Show balance" className="block lg:hidden w-[28px] h-[18px]" onClick={handleShowBalance}/>
+              <Image src={showBalance ? EyeClosed : EyeOpen} alt="Show balance" className="block lg:hidden w-[28px] h-[18px] sm:w-[35px] sm:h-[25px] ml-2" onClick={handleShowBalance}/>
             </motion.div>
 
             {renderPage()}

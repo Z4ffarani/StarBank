@@ -9,14 +9,14 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: ['en'],
-    supportedLngs: ['en', 'pt-BR', 'es'],
+    supportedLngs: ['en', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'pt-BR', 'zh', 'ru'],
     debug: true,
     ns: ['translation'],
     defaultNS: 'translation',
     backend: {
       loadPath: isServer
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}/locales/{{lng}}/translation.json`
-        : '/locales/{{lng}}/translation.json',
+        ? `${process.env.NEXT_PUBLIC_BASE_URL}/locales/{{lng}}.json`
+        : '/locales/{{lng}}.json',
     },
     interpolation: {
       escapeValue: false,

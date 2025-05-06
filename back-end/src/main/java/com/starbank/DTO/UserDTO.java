@@ -4,42 +4,36 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
-    @Email
-    @NotBlank(message = "E-mail is mandatory")
-    private String email;
+    @Email @NotBlank private String email;
+    @NotBlank private String password;
 
-    @NotBlank(message = "Password is mandatory")
-    private String password;
+    private double balance = 0.0;
+    private boolean logged = false;
+    private double loan = 0.0;
+    private LoanDTO loanInfo;
 
-    private double balance;
+    public UserDTO() {};
 
-    public UserDTO(String email, String password, double balance) {
+    public UserDTO(String email, String password) {
         this.email = email;
         this.password = password;
-        this.balance = balance;
-    }
+    };
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; };
+    public void setEmail(String email) { this.email = email; };
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getPassword() { return password; };
+    public void setPassword(String password) { this.password = password; };
 
-    public String getPassword() {
-        return password;
-    }
+    public double getBalance() { return balance; };
+    public void setBalance(double balance) { this.balance = balance; };
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public boolean isLogged() { return logged; };
+    public void setLogged(boolean logged) { this.logged = logged; };
 
-    public double getBalance() {
-        return balance;
-    }
+    public double getLoan() { return loan; };
+    public void setLoan(double loan) { this.loan = loan; };
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-}
+    public LoanDTO getLoanInfo() { return loanInfo; };
+    public void setLoanInfo(LoanDTO loanInfo) { this.loanInfo = loanInfo; };
+};

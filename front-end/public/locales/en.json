@@ -1,0 +1,112 @@
+{
+    "welcome": "Welcome to",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "I forgot my password",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Register",
+    
+    "newAccount": "New StarBank account",
+    "repeatPassword": "Repeat password",
+    
+    "titleAboutRegister": "About registration",
+    "aboutRegister": "This is a fictional, non-commercial project developed solely for demonstration purposes. Your privacy is important to us, and we do not process any real personal data. By registering, you will create a test account to explore the features of our prototype. No real transactions or financial operations take place, and no sensitive information is processed. You are free to browse and test the functionalities. This prototype is for educational and illustrative purposes only. It is not a real banking service and does not offer financial products.",
+    
+    "wrongPassword": "Wrong password.",
+    "userNotFound": "User not found.",
+    "sessionExpired": "Session expired.",
+    "errorFetchingBalance": "Error fetching balance.",
+    "loginError": "An error occurred while trying to login.",
+
+    "bothPasswordsMatch": "Both passwords must match.",
+    "emailAlreadyRegistered": "E-mail is already registered.",
+    "registrationError": "An error occurred during registration.",
+
+    "aboutUs": "About us",
+
+    "account": "Account",
+    "home": "Home",
+    "transfer": "Transfer",
+    "loans": "Loans",
+    "stocks": "Stocks",
+    "historic": "Historic",
+    "settings": "Settings",
+    "logout": "Log out",
+    
+    "balance": "Balance",
+
+    "amount": "Amount",
+    "recipient": "Recipient",
+    "message": "Message",
+
+    "transference": "Transference",
+    "receipt": "Receipt",
+    "to": "to",
+    "from": "from",
+
+    "allFieldsRequired": "All fields are required.",
+    "transferSuccess": "Transfer completed successfuly.",
+    "transferConflict": "Transfer failed due to conflict.",
+    "transferInfoError": "Some transfer information is wrong.",
+    "transferToSelforInsufficientBalance": "You cannot transfer to yourself or your balance is insufficient.",
+
+    "titleAboutLoans": "About loans",
+    "aboutLoans": "All loan data is fictional and does not represent real financial products. The data is randomly generated and does not reflect any real-world information. You can simulate loans to test the functionality of our prototype. No real transactions or financial operations take place, and no sensitive information is processed. This prototype is for educational and illustrative purposes only. It is not a real banking service and does not offer financial products",
+    "insufficientBalance": "Insufficient balance to request this loan.",
+    "loanRequestedError": "Error requesting the loan.",
+    "loanRepaymentError": "Error repaying the loan.",
+
+    "months": "months",
+    "IR": "IR",
+    "withdraw": "Withdraw",
+    "withdrawn": "Withdrawn",
+
+    "DY": "DY |",
+    "buy": "Buy",
+    "sell": "Sell",
+    
+    "stockQuantity": "Please choose a quantity of stocks.",
+    "stockBought": "Stocks bought successfully.",
+    "stockBoughtError": "Error buying stocks.",
+    "stockSold": "Stocks sold successfully.",
+    "stockSoldError": "Error selling stocks.",
+
+    "titleAboutStocks": "About stocks",
+    "aboutStocks": "All stock data is fictional and does not represent real companies or financial products. The data is randomly generated and does not reflect any real-world information. You can buy and sell stocks to test the functionality of our prototype. No real transactions or financial operations take place, and no sensitive information is processed. This prototype is for educational and illustrative purposes only. It is not a real banking service and does not offer financial products.",
+
+    "errorFetchingHistoric": "Error fetching historic.",
+
+    "changeEmail": "Change e-mail",
+    "changePassword": "Change password",
+    "resetWallet": "Reset wallet",
+    "deleteAccount": "Delete account",
+
+    "previousEmail": "Previous e-mail",
+    "newEmail": "New e-mail",
+    "repeatNewEmail": "Repeat new e-mail",
+
+    "previousEmailIncorrect": "Previous e-mail is incorrect.",
+    "emailsDontMatch": "E-mails don't match.",
+    "emailChanged": "E-mail changed successfully.",
+    "emailAlreadyInUse": "E-mail already in use.",
+    "errorChangingEmail": "Error changing e-mail.",
+
+    "newPassword": "New password",
+    "repeatNewPassword": "Repeat new password",
+
+    "samePassword": "New password must be different from the old one.",
+    "passwordChanged": "Password changed successfully.",
+    "passwordsDontMatch": "Passwords don't match.",
+    "errorChangingPassword": "Same password or wrong e-mail.",
+
+    "newBalance": "New balance",
+    "alertBalance": "*This new value will be overwritten to your current balance.",
+    "errorResettingWallet": "Error resetting wallet.",
+    "walletReset": "Wallet reset successfully.",
+
+    "aboutDeleteAccount": "Are you sure you want to delete your account? All your data will be permanently deleted. This action cannot be undone, and you will lose all your information.",
+
+    "accountDeleted": "Account deleted successfully.",
+    "errorDeletingAccount": "Error deleting account."
+}

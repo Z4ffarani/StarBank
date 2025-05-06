@@ -1,50 +1,49 @@
 package com.starbank.controller;
 
 import com.starbank.DTO.UserDTO;
+import com.starbank.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
-    private List<UserDTO> users = new ArrayList<>();
-    
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    };
+
     @PostMapping
-    public ResponseEntity<?> registerUser(@RequestBody UserDTO user) {
-        for (UserDTO userDTO : users) {
-            if (user.getEmail() != null && user.getEmail().equals(userDTO.getEmail())) {
-                return ResponseEntity.status(409).body("E-mail already registered.");
-            }
-        }
-    
-        System.out.println("registerUser()");
-        user.setBalance(1000);
-        users.add(user);
-        return ResponseEntity.ok("User registered.");
-    }
-    
-    @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody UserDTO loginRequest) {
-        System.out.println("loginUser()");
-        for (UserDTO user : users) {
-            if (user.getEmail().equals(loginRequest.getEmail())) {
-                if (user.getPassword().equals(loginRequest.getPassword())) {
-                    return ResponseEntity.ok("User logged.");
-                } else {
-                    return ResponseEntity.status(401).body("Wrong password.");
-                }
-            }
-        }
-        return ResponseEntity.status(404).body("User not found.");
-    }
+    public ResponseEntity<?> register(@RequestBody UserDTO user) {
+        return userService.register(user);
+    };
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> getAllUsers() {
-        System.out.println("getAllUsers()");
-        return ResponseEntity.ok(users);
-    }
-}
+        return ResponseEntity.ok(userService.getAllUsers());
+    };
+
+    @GetMapping("/me")
+    public ResponseEntity<?> getLoggedUser() {
+        return userService.getLoggedUser();
+    };
+
+    @PutMapping("/emailChange")
+    public ResponseEntity<?> changeEmail(@RequestBody UserDTO user) {
+        return userService.changeEmail(user);
+    };
+
+    @PutMapping("/resetWallet")
+    public ResponseEntity<?> resetWallet(@RequestBody UserDTO user) {
+        return userService.resetWallet(user);
+    };
+
+    @DeleteMapping("/deleteAccount")
+    public ResponseEntity<?> deleteAccount() {
+        return userService.deleteAccount();
+    };
+};

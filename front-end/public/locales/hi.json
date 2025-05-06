@@ -1,0 +1,112 @@
+{
+    "welcome": "Willkommen bei",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen",
+    "login": "Anmelden",
+    "noAccount": "Noch kein Konto?",
+    "register": "Registrieren",
+    
+    "newAccount": "Neues StarBank-Konto",
+    "repeatPassword": "Passwort wiederholen",
+    
+    "titleAboutRegister": "Über die Registrierung",
+    "aboutRegister": "Dies ist ein fiktives, nicht kommerzielles Projekt, das ausschließlich zu Demonstrationszwecken entwickelt wurde. Ihre Privatsphäre ist uns wichtig, und wir verarbeiten keine echten persönlichen Daten. Durch die Registrierung erstellen Sie ein Testkonto, um die Funktionen unseres Prototyps zu erkunden. Es finden keine echten Transaktionen oder Finanzoperationen statt, und es werden keine sensiblen Daten verarbeitet. Sie können die Funktionen frei durchsuchen und testen. Dieser Prototyp dient nur zu Bildungs- und Illustrationszwecken. Es handelt sich nicht um einen echten Bankdienst und bietet keine Finanzprodukte an.",
+    
+    "wrongPassword": "Falsches Passwort.",
+    "userNotFound": "Benutzer nicht gefunden.",
+    "sessionExpired": "Sitzung abgelaufen.",
+    "errorFetchingBalance": "Fehler beim Abrufen des Kontostands.",
+    "loginError": "Fehler beim Anmelden.",
+    
+    "bothPasswordsMatch": "Die beiden Passwörter müssen übereinstimmen.",
+    "emailAlreadyRegistered": "E-Mail bereits registriert.",
+    "registrationError": "Fehler bei der Registrierung.",
+    
+    "aboutUs": "Über uns",
+    
+    "account": "Konto",
+    "home": "Startseite",
+    "transfer": "Überweisung",
+    "loans": "Kredite",
+    "stocks": "Aktien",
+    "historic": "Verlauf",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    
+    "balance": "Kontostand",
+    
+    "amount": "Betrag",
+    "recipient": "Empfänger",
+    "message": "Nachricht",
+    
+    "transference": "Überweisung",
+    "receipt": "Beleg",
+    "to": "an",
+    "from": "von",
+    
+    "allFieldsRequired": "Alle Felder sind erforderlich.",
+    "transferSuccess": "Überweisung erfolgreich abgeschlossen.",
+    "transferConflict": "Überweisung aufgrund eines Konflikts fehlgeschlagen.",
+    "transferInfoError": "Einige Überweisungsinformationen sind falsch.",
+    "transferToSelforInsufficientBalance": "Sie können nicht an sich selbst überweisen oder Ihr Kontostand ist unzureichend.",
+    
+    "titleAboutLoans": "Über Kredite",
+    "aboutLoans": "Alle Kreditdaten sind fiktiv und stellen keine echten Finanzprodukte dar. Die Daten werden zufällig generiert und spiegeln keine realen Informationen wider. Sie können Kredite simulieren, um die Funktionalität unseres Prototyps zu testen. Es finden keine echten Transaktionen oder Finanzoperationen statt, und es werden keine sensiblen Daten verarbeitet. Dieser Prototyp dient nur zu Bildungs- und Illustrationszwecken. Es handelt sich nicht um einen echten Bankdienst und bietet keine Finanzprodukte an.",
+    "insufficientBalance": "Unzureichender Kontostand, um diesen Kredit zu beantragen.",
+    "loanRequestedError": "Fehler bei der Kreditbeantragung.",
+    "loanRepaymentError": "Fehler bei der Rückzahlung des Kredits.",
+    
+    "months": "Monate",
+    "IR": "Zinssatz",
+    "withdraw": "Abheben",
+    "withdrawn": "Abgehoben",
+    
+    "DY": "DY |",
+    "buy": "Kaufen",
+    "sell": "Verkaufen",
+    
+    "stockQuantity": "Bitte wählen Sie eine Aktienmenge.",
+    "stockBought": "Aktien erfolgreich gekauft.",
+    "stockBoughtError": "Fehler beim Kauf von Aktien.",
+    "stockSold": "Aktien erfolgreich verkauft.",
+    "stockSoldError": "Fehler beim Verkauf von Aktien.",
+    
+    "titleAboutStocks": "Über Aktien",
+    "aboutStocks": "Alle Aktiendaten sind fiktiv und stellen keine echten Unternehmen oder Finanzprodukte dar. Die Daten werden zufällig generiert und spiegeln keine realen Informationen wider. Sie können Aktien kaufen und verkaufen, um die Funktionalität unseres Prototyps zu testen. Es finden keine echten Transaktionen oder Finanzoperationen statt, und es werden keine sensiblen Daten verarbeitet. Dieser Prototyp dient nur zu Bildungs- und Illustrationszwecken. Es handelt sich nicht um einen echten Bankdienst und bietet keine Finanzprodukte an.",
+    
+    "errorFetchingHistoric": "Fehler beim Abrufen des Verlaufs.",
+    
+    "changeEmail": "E-Mail ändern",
+    "changePassword": "Passwort ändern",
+    "resetWallet": "Brieftasche zurücksetzen",
+    "deleteAccount": "Konto löschen",
+    
+    "previousEmail": "Vorherige E-Mail",
+    "newEmail": "Neue E-Mail",
+    "repeatNewEmail": "Neue E-Mail wiederholen",
+    
+    "previousEmailIncorrect": "Vorherige E-Mail ist falsch.",
+    "emailsDontMatch": "Die E-Mails stimmen nicht überein.",
+    "emailChanged": "E-Mail erfolgreich geändert.",
+    "emailAlreadyInUse": "E-Mail bereits in Verwendung.",
+    "errorChangingEmail": "Fehler beim Ändern der E-Mail.",
+    
+    "newPassword": "Neues Passwort",
+    "repeatNewPassword": "Neues Passwort wiederholen",
+    
+    "samePassword": "Das neue Passwort muss sich vom alten unterscheiden.",
+    "passwordChanged": "Passwort erfolgreich geändert.",
+    "passwordsDontMatch": "Die Passwörter stimmen nicht überein.",
+    "errorChangingPassword": "Fehler beim Ändern des Passworts oder falsche E-Mail.",
+    
+    "newBalance": "Neuer Kontostand",
+    "alertBalance": "*Dieser neue Wert ersetzt Ihren aktuellen Kontostand.",
+    "errorResettingWallet": "Fehler beim Zurücksetzen der Brieftasche.",
+    "walletReset": "Brieftasche erfolgreich zurückgesetzt.",
+    
+    "aboutDeleteAccount": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Alle Ihre Daten werden dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden, und Sie verlieren alle Ihre Informationen.",
+    
+    "accountDeleted": "Konto erfolgreich gelöscht.",
+    "errorDeletingAccount": "Fehler beim Löschen des Kontos."
+}

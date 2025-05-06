@@ -1,8 +1,24 @@
-import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import axios from 'axios';
 
 export default function deleteAccount() {
+  const router = useRouter();
+  
   const { t } = useTranslation();
+
+  const handleDeleteAccount = async () => {
+    try {
+      await axios.delete('http://localhost:8080/user/deleteAccount');
+      alert(t('accountDeleted'));
+      router.push('/');
+      
+    } catch (error) {
+      alert(t('errorDeletingAccount'));
+    };
+  };
 
   return (
     <motion.section
@@ -14,11 +30,11 @@ export default function deleteAccount() {
       className='bg-transparent flex flex-col justify-between lg:bg-primary gap-[50px] rounded-[25px] px-6 sm:px-[50px] lg:py-[55px] mb-[250px] lg:mb-0'
     >
       <div>
-        <h1 className='text-tertiary text-[25px] lg:text-[30px] text-center lg:text-justify'>{t('aboutDeleteAccount')}</h1>
+        <h1 className='text-tertiary text-[20px] text-center lg:text-justify'>{t('aboutDeleteAccount')}</h1>
       </div>
 
       <div className='flex justify-center xl:justify-end'>
-        <button type="submit" className="mt-1 h-[65px] px-8 text-[24px] font-semibold rounded-lg bg-sbgreen bg-opacity-50 active:bg-opacity-25 transition duration-200 ease">{t('deleteAccount')}</button>
+        <button onClick={handleDeleteAccount} className="mt-1 h-[65px] px-8 text-[20px] font-semibold rounded-lg bg-sbgreen bg-opacity-50 active:bg-opacity-25 transition duration-200 ease">{t('deleteAccount')}</button>
       </div>
     </motion.section>
   );
