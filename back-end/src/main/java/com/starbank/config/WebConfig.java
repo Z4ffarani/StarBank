@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    private final String allowedOrigin = System.getenv().getOrDefault("FRONTEND_URL", "http://localhost:3000");
+    private final String allowedOrigin = System.getenv().getOrDefault("FRONT_END_URL", "http://localhost:3000");
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
