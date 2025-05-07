@@ -1,5 +1,7 @@
 "use client";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useState } from 'react';
 
 import Head from 'next/head';
@@ -48,7 +50,7 @@ export default function Settings() {
     };
 
     try {
-      const response = await axios.put('http://back-end:8080/user/emailChange', {
+      const response = await axios.put(`${backendUrl}/user/emailChange`, {
           email: newEmail
         }
       );

@@ -1,5 +1,7 @@
 "use client";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useTranslation } from "react-i18next";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import axios from "axios";
@@ -58,7 +60,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
     };
 
     try {
-      await axios.post('http://back-end:8080/stock/buy', {
+      await axios.post(`${backendUrl}/stock/buy`, {
         value: stock.value,
         quantity: qty,
       });
@@ -69,7 +71,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
       alert(t("stockBoughtError"));
     };
 
-    await axios.post('http://back-end:8080/transfer/stock', {
+    await axios.post(`${backendUrl}/transfer/stock`, {
       amount: stock.value * qty,
       recipient: stock.name,
     });
@@ -84,7 +86,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
     };
 
     try {
-      await axios.post('http://back-end:8080/stock/sell', {
+      await axios.post(`${backendUrl}/stock/sell`, {
         value: stock.value,
         quantity: qty,
       });
@@ -102,7 +104,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
       for (const stock of stockList) {
         const qty = quantities[stock.name];
         if (qty > 0) {
-          await axios.put('http://back-end:8080/stock/DY', {
+          await axios.put(`${backendUrl}/stock/DY`, {
             value: stock.value,
             quantity: qty,
             DY: stock.DY,

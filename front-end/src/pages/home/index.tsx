@@ -1,5 +1,7 @@
 "use client";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useState, useEffect } from "react";
 
 import Head from "next/head";
@@ -127,7 +129,7 @@ export default function Home() {
     };
     
     try {
-      const response = await axios.get("http://back-end:8080/user");
+      const response = await axios.get(`${backendUrl}/user`);
       const allUsers = response.data;
       const currentUser = allUsers.find((n: any) => n.email === emailContext);
       
@@ -164,7 +166,7 @@ export default function Home() {
     };
 
     try {
-      await axios.post('http://back-end:8080/stock/buy', {
+      await axios.post(`${backendUrl}/stock/buy`, {
         value: stock.value,
         quantity: qty,
       });
@@ -186,7 +188,7 @@ export default function Home() {
     };
 
     try {
-      await axios.post('http://back-end:8080/stock/sell', {
+      await axios.post(`${backendUrl}/stock/sell`, {
         value: stock.value,
         quantity: qty,
       });
@@ -205,7 +207,7 @@ export default function Home() {
         const qty = quantities[stock.name];
 
         if (qty > 0) {
-          await axios.put('http://back-end:8080/stock/DY', {
+          await axios.put(`${backendUrl}/stock/DY`, {
             value: stock.value,
             quantity: qty,
             DY: stock.DY
@@ -228,7 +230,7 @@ export default function Home() {
       setMonths(loanMonths);
       setRemainingMonths(loanMonths);
       
-      const { data } = await axios.post("http://back-end:8080/loan/request", {
+      const { data } = await axios.post(`${backendUrl}/loan/request`, {
         value: loanValue,
         ir: loanIr,
         months: loanMonths
@@ -244,7 +246,7 @@ export default function Home() {
     if (monthlyInstallment > 0 && remainingMonths > 0) {
       const interval = setInterval(async () => {
         try {
-          await axios.put("http://back-end:8080/loan/repay", null, {
+          await axios.put(`${backendUrl}/loan/repay`, null, {
             params: { installment: monthlyInstallment }
           });
           setRemainingMonths(prev => prev - 1);
@@ -258,7 +260,7 @@ export default function Home() {
   }, [monthlyInstallment, remainingMonths]);
 
   const handleLogout = async () => {
-    await axios.post("http://back-end:8080/auth/logout", {
+    await axios.post(`${backendUrl}/auth/logout`, {
       email: emailContext,
     });
 

@@ -15,7 +15,7 @@ i18n
     defaultNS: 'translation',
     backend: {
       loadPath: isServer
-        ? `${process.env.NEXT_PUBLIC_BASE_URL}/locales/{{lng}}.json`
+        ? `https://starbank.up.railway.app/locales/{{lng}}.json`
         : '/locales/{{lng}}.json',
     },
     interpolation: {

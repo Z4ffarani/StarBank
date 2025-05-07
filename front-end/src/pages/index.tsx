@@ -1,5 +1,7 @@
 "use client";
 
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useState } from "react";
 
 import Head from "next/head";
@@ -84,7 +86,7 @@ export default function Login() {
     localStorage.setItem("localPassword", password);
 
     try {
-      const response = await axios.post("http://back-end:8080/auth/login", {
+      const response = await axios.post(`${backendUrl}/auth/login`, {
         email,
         password,
       });

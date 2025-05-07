@@ -1,3 +1,5 @@
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -13,7 +15,7 @@ export default function resetWallet() {
     e.preventDefault();
     
     try {
-      await axios.put('http://back-end:8080/user/resetWallet', {
+      await axios.put(`${backendUrl}/user/resetWallet`, {
         balance: addBalance
       });
 

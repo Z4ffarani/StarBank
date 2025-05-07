@@ -1,3 +1,5 @@
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useState, useEffect } from "react";
 
 import i18n from 'i18next';
@@ -35,7 +37,7 @@ export default function Historic() {
 
     const handleHistoric = async () => {
         try {
-            const response = await axios.get("http://back-end:8080/transfer");
+            const response = await axios.get(`${backendUrl}/transfer`);
             setTransfers(response.data);
         } catch (error) {
             alert(t('errorFetchingHistoric'));

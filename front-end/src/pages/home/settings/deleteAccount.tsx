@@ -1,3 +1,5 @@
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
@@ -11,7 +13,7 @@ export default function deleteAccount() {
 
   const handleDeleteAccount = async () => {
     try {
-      await axios.delete('http://back-end:8080/user/deleteAccount');
+      await axios.delete(`${backendUrl}/user/deleteAccount`);
       alert(t('accountDeleted'));
       router.push('/');
       

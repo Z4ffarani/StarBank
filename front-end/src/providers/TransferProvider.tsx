@@ -1,3 +1,5 @@
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
@@ -33,7 +35,7 @@ export const TransferProvider = ({ children }: { children: React.ReactNode }) =>
         return;
       };
 
-      const response = await axios.put("http://back-end:8080/transfer", {
+      const response = await axios.put(`${backendUrl}/transfer`, {
         amount,
         recipient,
         password,
