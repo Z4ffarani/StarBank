@@ -1,3 +1,5 @@
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import HttpBackend from 'i18next-http-backend';
@@ -15,7 +17,7 @@ i18n
     defaultNS: 'translation',
     backend: {
       loadPath: isServer
-        ? `https://starbank.up.railway.app/locales/{{lng}}.json`
+        ? `${backendUrl}/locales/{{lng}}.json`
         : '/locales/{{lng}}.json',
     },
     interpolation: {
