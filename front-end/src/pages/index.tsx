@@ -84,7 +84,7 @@ export default function Login() {
     localStorage.setItem("localPassword", password);
 
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
+      const response = await axios.post("http://back-end:8080/auth/login", {
         email,
         password,
       });

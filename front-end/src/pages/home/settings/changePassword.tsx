@@ -20,7 +20,7 @@ export default function changePassword() {
     };
 
     try {
-      const response = await axios.put('http://localhost:8080/auth/changePassword', 
+      const response = await axios.put('http://back-end:8080/auth/changePassword', 
         { email },
         { params: { newPassword } }
       );

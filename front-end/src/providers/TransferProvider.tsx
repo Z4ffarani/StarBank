@@ -33,7 +33,7 @@ export const TransferProvider = ({ children }: { children: React.ReactNode }) =>
         return;
       };
 
-      const response = await axios.put("http://localhost:8080/transfer", {
+      const response = await axios.put("http://back-end:8080/transfer", {
         amount,
         recipient,
         password,

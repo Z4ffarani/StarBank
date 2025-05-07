@@ -94,7 +94,7 @@ export default function Home() {
         return;
       };
   
-      const response = await axios.post("http://localhost:8080/user", {
+      const response = await axios.post("http://back-end:8080/user", {
         email,
         password,
       });

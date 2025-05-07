@@ -11,7 +11,7 @@ export default function deleteAccount() {
 
   const handleDeleteAccount = async () => {
     try {
-      await axios.delete('http://localhost:8080/user/deleteAccount');
+      await axios.delete('http://back-end:8080/user/deleteAccount');
       alert(t('accountDeleted'));
       router.push('/');
       

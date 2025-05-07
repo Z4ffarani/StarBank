@@ -35,7 +35,7 @@ export default function Historic() {
 
     const handleHistoric = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/transfer");
+            const response = await axios.get("http://back-end:8080/transfer");
             setTransfers(response.data);
         } catch (error) {
             alert(t('errorFetchingHistoric'));

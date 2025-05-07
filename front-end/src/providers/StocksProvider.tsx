@@ -58,7 +58,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
     };
 
     try {
-      await axios.post('http://localhost:8080/stock/buy', {
+      await axios.post('http://back-end:8080/stock/buy', {
         value: stock.value,
         quantity: qty,
       });
@@ -69,7 +69,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
       alert(t("stockBoughtError"));
     };
 
-    await axios.post('http://localhost:8080/transfer/stock', {
+    await axios.post('http://back-end:8080/transfer/stock', {
       amount: stock.value * qty,
       recipient: stock.name,
     });
@@ -84,7 +84,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
     };
 
     try {
-      await axios.post('http://localhost:8080/stock/sell', {
+      await axios.post('http://back-end:8080/stock/sell', {
         value: stock.value,
         quantity: qty,
       });
@@ -102,7 +102,7 @@ export function StocksProvider({ children }: { children: ReactNode }) {
       for (const stock of stockList) {
         const qty = quantities[stock.name];
         if (qty > 0) {
-          await axios.put('http://localhost:8080/stock/DY', {
+          await axios.put('http://back-end:8080/stock/DY', {
             value: stock.value,
             quantity: qty,
             DY: stock.DY,

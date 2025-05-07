@@ -37,7 +37,7 @@ export function LoansProvider({ children }: { children: ReactNode }) {
       setMonths(loanMonths);
       setRemainingMonths(loanMonths);
 
-      const { data } = await axios.post("http://localhost:8080/loan/request", {
+      const { data } = await axios.post("http://back-end:8080/loan/request", {
         value: loanValue,
         ir: loanIr,
         months: loanMonths,
@@ -45,7 +45,7 @@ export function LoansProvider({ children }: { children: ReactNode }) {
 
       setMonthlyInstallment(data.monthlyInstallment);
 
-      await axios.post('http://localhost:8080/transfer/loan', {
+      await axios.post('http://back-end:8080/transfer/loan', {
         amount: loanValue,
         sender: "StarBank",
       });
@@ -58,7 +58,7 @@ export function LoansProvider({ children }: { children: ReactNode }) {
     if (monthlyInstallment > 0 && remainingMonths > 0) {
       const interval = setInterval(async () => {
         try {
-          await axios.put("http://localhost:8080/loan/repay", null, {
+          await axios.put("http://back-end:8080/loan/repay", null, {
             params: { installment: monthlyInstallment },
           });
           setRemainingMonths(prev => prev - 1);

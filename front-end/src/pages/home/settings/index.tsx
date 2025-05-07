@@ -48,7 +48,7 @@ export default function Settings() {
     };
 
     try {
-      const response = await axios.put('http://localhost:8080/user/emailChange', {
+      const response = await axios.put('http://back-end:8080/user/emailChange', {
           email: newEmail
         }
       );

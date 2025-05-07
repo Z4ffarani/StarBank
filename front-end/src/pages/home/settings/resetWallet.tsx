@@ -13,7 +13,7 @@ export default function resetWallet() {
     e.preventDefault();
     
     try {
-      await axios.put('http://localhost:8080/user/resetWallet', {
+      await axios.put('http://back-end:8080/user/resetWallet', {
         balance: addBalance
       });
 
