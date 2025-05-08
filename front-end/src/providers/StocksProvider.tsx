@@ -70,11 +70,6 @@ export function StocksProvider({ children }: { children: ReactNode }) {
     } catch {
       alert(t("stockBoughtError"));
     };
-
-    await axios.post(`${backendUrl}/transfer/stock`, {
-      amount: stock.value * qty,
-      recipient: stock.name,
-    });
   };
 
   const handleSellStock = async (stock: Stock) => {

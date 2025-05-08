@@ -25,11 +25,6 @@ public class TransferController {
         return transferService.transferLoan(transfer);
     };
 
-    @PostMapping("/stock")
-    public ResponseEntity<?> transferStock(@RequestBody TransferDTO transfer) {
-        return transferService.transferStock(transfer);
-    };
-
     @GetMapping
     public ResponseEntity<?> getTransfers() {
         return ResponseEntity.ok(transferService.getAllTransfers());

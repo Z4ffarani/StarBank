@@ -64,17 +64,6 @@ public class TransferService {
         return ResponseEntity.ok().build();
     };
 
-    public ResponseEntity<Void> transferStock(TransferDTO transfer) {
-        Optional<UserDTO> senderOpt = validateUser();
-        if (senderOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        };
-
-        transfer.setDate(new Timestamp(System.currentTimeMillis()));
-        transfers.add(transfer);
-        return ResponseEntity.ok().build();
-    };
-
     public List<TransferDTO> getAllTransfers() {
         return transfers.stream()
                 .sorted(Comparator.comparing(TransferDTO::getDate).reversed())
