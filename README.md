@@ -73,7 +73,7 @@ docker exec -it <container_id> bash
 
 - Loans do not have discounts at the demonstrated speed, and the calculations presented are purely illustrative.
 
-- Fictional stocks do not generate dividends at the demonstrated speed.
+- Real stocks don’t distribute dividends at the speed demonstrated.
 
 - It is possible to change the email, password, balance, and even delete the account in the settings section.
 
