@@ -6,7 +6,6 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 COPY . .
 RUN mvn package -DskipTests
-
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
@@ -21,7 +20,6 @@ CMD ["java", "-jar", "app.jar"]
 # COPY pom.xml .
 # RUN mvn dependency:go-offline
 # COPY . .
-
 # FROM maven:3.8-openjdk-17-slim
 # WORKDIR /app
 # COPY --from=build /app .

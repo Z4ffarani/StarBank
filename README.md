@@ -30,7 +30,7 @@ docker compose up
 
 6. Open a new terminal and access the front-end container:
 ```bash
-docker exec -it <starbank-front-end> sh
+docker exec -it starbank-front-end-1 sh
 ```
 
 7. In the terminal, install the Node.js modules package:
