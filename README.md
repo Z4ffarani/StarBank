@@ -16,36 +16,48 @@ Starbank is a prototype of a digital bank that leverages cutting-edge technology
 git clone https://github.com/Z4ffarani/starbank.git
 ```
 
-3. Go to the back-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
+3. Go to the front-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
 
-4. In the terminal, navigate to the project folder:
+4. Go to the back-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
+
+5. In the terminal, navigate to the project folder:
 ```bash
 cd StarBank
 ```
 
-5. In the terminal, create the containers using the `docker-compose.yml` file:
+6. In the terminal, create the containers using the `docker-compose.yml` file:
 ```bash
 docker compose up
 ```
 
-6. Open a new terminal and access the front-end container:
+7. Open a new terminal and access the front-end container:
 ```bash
 docker exec -it starbank-front-end-1 sh
 ```
 
-7. In the terminal, install the Node.js modules package:
+8. In the terminal, install the Node.js modules package:
 ```bash
 npm install
 ```
 
-8. In the terminal, start the front-end development server:
+9. In the terminal, start the front-end development server:
 ```bash
 npm run dev
 ```
 
-9. Access the front-end at: **http://localhost:3000**.
+10. Open a new terminal and access the back-end container:
+```bash
+docker exec -it starbank-back-end-1 sh
+```
 
-10. Access the back-end at: **http://localhost:8080**.
+11. In the terminal, start the back-end development server:
+```bash
+mvn spring-boot:run
+```
+
+12. Access the front-end at: **http://localhost:3000**.
+
+13. Access the back-end at: **http://localhost:8080**.
 
 <br>
 

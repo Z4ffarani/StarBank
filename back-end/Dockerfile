@@ -24,4 +24,3 @@ CMD ["java", "-jar", "app.jar"]
 # WORKDIR /app
 # COPY --from=build /app .
 # EXPOSE 8080
-# CMD ["mvn", "spring-boot:run"]
