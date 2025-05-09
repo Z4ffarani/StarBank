@@ -16,34 +16,36 @@ Starbank is a prototype of a digital bank that leverages cutting-edge technology
 git clone https://github.com/Z4ffarani/starbank.git
 ```
 
-3. Navigate to the project folder:
+3. Go to the back-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
+
+4. In the terminal, navigate to the project folder:
 ```bash
 cd StarBank
 ```
 
-4. Open the folder in a container using the `docker-compose.yml` file:
+5. In the terminal, create the containers using the `docker-compose.yml` file:
 ```bash
 docker compose up
 ```
 
-5. Install the Node.js module packages:
+6. Open a new terminal and access the front-end container:
+```bash
+docker exec -it <starbank-front-end> sh
+```
+
+7. In the terminal, install the Node.js modules package:
 ```bash
 npm install
 ```
 
-6. Start the front-end development server:
+8. In the terminal, start the front-end development server:
 ```bash
 npm run dev
 ```
 
-7. Access the `back-end` folder connected to another container:
-```bash
-docker exec -it <container_id> bash
-```
+9. Access the front-end at: **http://localhost:3000**.
 
-8. Access the front-end at: **http://localhost:3000**.
-
-9. The back-end will be available at: **http://localhost:8080**.
+10. Access the back-end at: **http://localhost:8080**.
 
 <br>
 
