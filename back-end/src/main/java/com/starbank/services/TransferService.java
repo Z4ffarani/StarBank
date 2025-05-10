@@ -30,6 +30,7 @@ public class TransferService {
         };
 
         UserDTO sender = senderOpt.get();
+
         Optional<UserDTO> recipientOpt = userService.findByEmail(transfer.getRecipient());
         if (recipientOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -44,10 +45,12 @@ public class TransferService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         };
 
-        transfer.setSender(sender.getEmail());
+        transfer.setRecipient(sender.getEmail());
+        transfer.setDate(new Timestamp(System.currentTimeMillis()));
+
         sender.setBalance(sender.getBalance() - transfer.getAmount());
         recipient.setBalance(recipient.getBalance() + transfer.getAmount());
-        transfer.setDate(new Timestamp(System.currentTimeMillis()));
+        
         transfers.add(transfer);
         return ResponseEntity.ok().build();
     };
