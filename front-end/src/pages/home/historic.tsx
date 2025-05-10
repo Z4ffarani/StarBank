@@ -133,6 +133,11 @@ export default function Historic() {
                                         <h1>{transfer.amount}</h1>
                                     </div>
                                 </div>
+
+                                <div className="flex items-center">
+                                    <h1>{transfer.message}</h1>
+                                </div>
+
                                 <div className="flex flex-row justify-between xl:justify-center xl:flex-col xl:items-center">
                                     <h1 className="text-tertiary">
                                         {new Date(transfer.date).toLocaleString(i18n.language || 'en', {

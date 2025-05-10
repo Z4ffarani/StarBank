@@ -40,7 +40,7 @@ public class TransferService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         };
 
-        if (sender.getEmail().equals(transfer.getRecipient()) || recipient.getEmail().equals(transfer.getSender())) {
+        if (sender.getEmail().equals(transfer.getRecipient())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         };
 

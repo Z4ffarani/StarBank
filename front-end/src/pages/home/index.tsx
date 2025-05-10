@@ -401,7 +401,7 @@ export default function Home() {
                     <div className="w-full h-full relative flex justify-center items-center">
                       <Image src={SbBuilding} alt="Starbank building" fill className="rounded-[25px] object-cover opacity-50" />
                       
-                      <button className="absolute rounded-[15px] px-7 py-2 text-[25px] sm:text-[30px] font-medium bg-othergreen active:bg-opacity-50 transition duration-300 ease">{t('aboutUs')}</button>
+                      <a href="https://youtu.be/3rdr3UlUxWI" className="absolute rounded-[15px] px-7 py-2 text-[25px] sm:text-[30px] font-medium bg-othergreen active:bg-opacity-50 transition duration-300 ease">{t('aboutUs')}</a>
                     </div>
                   </motion.div>
 

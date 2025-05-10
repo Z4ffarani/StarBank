@@ -4,7 +4,7 @@
 Starbank is a prototype of a digital bank that leverages cutting-edge technology to provide the best user experience with simplicity and dynamism. The goal is to make financial routines easier and more efficient, promoting the flow of money. Each client is treated like a star, with everything orbiting in their favor. For this reason, the platform offers practical access through an intelligent menu, multilingual support, and sections dedicated to money transfers, loans, stock investments, history, account settings, all in a single page.
 
 ## LINKS:
-- **[Trailer]()**
+- **[Trailer](https://youtu.be/3rdr3UlUxWI)**
 
 <br>
 

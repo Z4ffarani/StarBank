@@ -46,9 +46,9 @@
     "from": "from",
 
     "allFieldsRequired": "All fields are required.",
-    "transferSuccess": "Transfer completed successfuly.",
-    "transferConflict": "Transfer failed due to conflict.",
-    "transferInfoError": "Some transfer information is wrong.",
+    "transferSuccess": "Transference completed successfuly.",
+    "transferConflict": "Transference failed due to conflict.",
+    "transferInfoError": "Some transference information is wrong.",
     "transferToSelforInsufficientBalance": "You cannot transfer to yourself or your balance is insufficient.",
 
     "titleAboutLoans": "About loans",
