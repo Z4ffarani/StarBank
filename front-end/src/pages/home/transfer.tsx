@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
-
 import { useTransfer } from '../../providers/TransferProvider';
+
+import { useTranslation } from "next-i18next";
 
 export default function Transfer() {
     const { setAmount, setRecipient, setPassword, setMessage, handleTransfer } = useTransfer();

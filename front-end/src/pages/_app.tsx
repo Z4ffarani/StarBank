@@ -5,7 +5,6 @@ import { UserProvider } from '../context/UserContext';
 import { AppProvider } from '../providers/AppProvider';
 
 import { appWithTranslation } from 'next-i18next';
-import '../i18n';
 
 function App({ Component, pageProps }: AppProps) {
   return (

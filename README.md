@@ -40,9 +40,9 @@ docker exec -it starbank-front-end-1 sh
 npm install
 ```
 
-9. In the terminal, start the front-end development server:
+9. In the terminal, set the environment to "development" and start the front-end development server:
 ```bash
-npm run dev
+NODE_ENV=development npm run dev
 ```
 
 10. Open a new terminal and access the back-end container:

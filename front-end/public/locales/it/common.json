@@ -1,0 +1,112 @@
+{
+    "welcome": "Benvenuto su",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Password dimenticata",
+    "login": "Accedi",
+    "noAccount": "Non hai un account?",
+    "register": "Registrati",
+    
+    "newAccount": "Nuovo account StarBank",
+    "repeatPassword": "Ripeti password",
+    
+    "titleAboutRegister": "Informazioni sulla registrazione",
+    "aboutRegister": "Questo è un progetto fittizio, non commerciale, sviluppato esclusivamente a scopo dimostrativo. La tua privacy è importante per noi e non trattiamo alcun dato personale reale. Registrandoti, creerai un account di prova per esplorare le funzionalità del nostro prototipo. Non avvengono transazioni reali o operazioni finanziarie e non vengono trattati dati sensibili. Sei libero di navigare e testare le funzionalità. Questo prototipo è solo a scopo educativo e illustrativo. Non è un servizio bancario reale e non offre prodotti finanziari.",
+    
+    "wrongPassword": "Password errata.",
+    "userNotFound": "Utente non trovato.",
+    "sessionExpired": "Sessione scaduta.",
+    "errorFetchingBalance": "Errore durante il recupero del saldo.",
+    "loginError": "Si è verificato un errore durante l'accesso.",
+    
+    "bothPasswordsMatch": "Le due password devono coincidere.",
+    "emailAlreadyRegistered": "E-mail già registrata.",
+    "registrationError": "Si è verificato un errore durante la registrazione.",
+    
+    "aboutUs": "Chi siamo",
+    
+    "account": "Account",
+    "home": "Home",
+    "transfer": "Trasferimento",
+    "loans": "Prestiti",
+    "stocks": "Azioni",
+    "historic": "Storico",
+    "settings": "Impostazioni",
+    "logout": "Esci",
+    
+    "balance": "Saldo",
+    
+    "amount": "Importo",
+    "recipient": "Destinatario",
+    "message": "Messaggio",
+    
+    "transference": "Trasferimento",
+    "receipt": "Ricevuta",
+    "to": "a",
+    "from": "da",
+    
+    "allFieldsRequired": "Tutti i campi sono obbligatori.",
+    "transferSuccess": "Trasferimento completato con successo.",
+    "transferConflict": "Il trasferimento è fallito a causa di un conflitto.",
+    "transferInfoError": "Alcune informazioni sul trasferimento sono errate.",
+    "transferToSelforInsufficientBalance": "Non puoi trasferire a te stesso o il tuo saldo è insufficiente.",
+    
+    "titleAboutLoans": "Informazioni sui prestiti",
+    "aboutLoans": "Tutti i dati sui prestiti sono fittizi e non rappresentano prodotti finanziari reali. I dati sono generati casualmente e non riflettono alcuna informazione reale. Puoi simulare prestiti per testare le funzionalità del nostro prototipo. Non avvengono transazioni reali o operazioni finanziarie e non vengono trattati dati sensibili. Questo prototipo è solo a scopo educativo e illustrativo. Non è un servizio bancario reale e non offre prodotti finanziari.",
+    "insufficientBalance": "Saldo insufficiente per richiedere questo prestito.",
+    "loanRequestedError": "Errore durante la richiesta del prestito.",
+    "loanRepaymentError": "Errore durante il rimborso del prestito.",
+    
+    "months": "mesi",
+    "IR": "Tasso",
+    "withdraw": "Preleva",
+    "withdrawn": "Prelevato",
+    
+    "DY": "DY |",
+    "buy": "Compra",
+    "sell": "Vendi",
+    
+    "stockQuantity": "Seleziona una quantità di azioni.",
+    "stockBought": "Azioni acquistate con successo.",
+    "stockBoughtError": "Errore durante l'acquisto delle azioni.",
+    "stockSold": "Azioni vendute con successo.",
+    "stockSoldError": "Errore durante la vendita delle azioni.",
+    
+    "titleAboutStocks": "Informazioni sulle azioni",
+    "aboutStocks": "Tutti i dati sulle azioni sono fittizi e non rappresentano aziende reali o prodotti finanziari. I dati sono generati casualmente e non riflettono alcuna informazione reale. Puoi acquistare e vendere azioni per testare le funzionalità del nostro prototipo. Non avvengono transazioni reali o operazioni finanziarie e non vengono trattati dati sensibili. Questo prototipo è solo a scopo educativo e illustrativo. Non è un servizio bancario reale e non offre prodotti finanziari.",
+    
+    "errorFetchingHistoric": "Errore durante il recupero dello storico.",
+    
+    "changeEmail": "Cambia e-mail",
+    "changePassword": "Cambia password",
+    "resetWallet": "Reimposta portafoglio",
+    "deleteAccount": "Elimina account",
+    
+    "previousEmail": "E-mail precedente",
+    "newEmail": "Nuova e-mail",
+    "repeatNewEmail": "Ripeti nuova e-mail",
+    
+    "previousEmailIncorrect": "E-mail precedente errata.",
+    "emailsDontMatch": "Le e-mail non corrispondono.",
+    "emailChanged": "E-mail modificata con successo.",
+    "emailAlreadyInUse": "E-mail già in uso.",
+    "errorChangingEmail": "Errore durante la modifica dell'e-mail.",
+    
+    "newPassword": "Nuova password",
+    "repeatNewPassword": "Ripeti nuova password",
+    
+    "samePassword": "La nuova password deve essere diversa dalla vecchia.",
+    "passwordChanged": "Password modificata con successo.",
+    "passwordsDontMatch": "Le password non corrispondono.",
+    "errorChangingPassword": "Errore durante la modifica della password o e-mail errata.",
+    
+    "newBalance": "Nuovo saldo",
+    "alertBalance": "*Questo nuovo valore sostituirà il tuo saldo attuale.",
+    "errorResettingWallet": "Errore durante il ripristino del portafoglio.",
+    "walletReset": "Portafoglio ripristinato con successo.",
+    
+    "aboutDeleteAccount": "Sei sicuro di voler eliminare il tuo account? Tutti i tuoi dati saranno eliminati definitivamente. Questa azione non può essere annullata e perderai tutte le tue informazioni.",
+    
+    "accountDeleted": "Account eliminato con successo.",
+    "errorDeletingAccount": "Errore durante l'eliminazione dell'account."
+}

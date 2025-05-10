@@ -1,9 +1,9 @@
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import i18n from 'i18next';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
+
 import { motion } from "framer-motion";
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ import { BiSolidDownArrow, BiSolidUpArrow } from 'react-icons/bi';
 import { useUserContext } from "../../context/UserContext";
 
 export default function Historic() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const [category, setCategory] = useState<boolean>(false);
     const [transfers, setTransfers] = useState<any[]>([]);

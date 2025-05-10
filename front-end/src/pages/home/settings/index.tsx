@@ -8,7 +8,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
@@ -29,6 +29,7 @@ export default function Settings() {
   const router = useRouter();
 
   const { t } = useTranslation();
+  
   const [activePage, setActivePage] = useState<string | null>(null);
   const [previousEmail, setPreviousEmail] = useState<string>('');
   const [newEmail, setNewEmail] = useState<string>('');

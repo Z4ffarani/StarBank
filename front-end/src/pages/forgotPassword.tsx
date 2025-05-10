@@ -9,8 +9,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import i18n from "../i18n";
-import { useTranslation } from 'react-i18next';
+import i18nLocales from "../i18nLocales";
+import { useTranslation } from "next-i18next";
+
 import { motion } from "framer-motion";
 import axios from "axios";
 
@@ -34,43 +35,27 @@ export default function ForgotPassword() {
 
   const router = useRouter();
 
-  const lng = i18n.language;
-  const flag = lng === 'en' ? UsaFlag
-  : lng === 'zh' ? ChinaFlag
-  : lng === 'hi' ? IndiaFlag
-  : lng === 'es' ? SpainFlag
-  : lng === 'pt-BR' ? BrazilFlag
-  : lng === 'ru' ? RussiaFlag
-  : lng === 'fr' ? FranceFlag
-  : lng === 'de' ? GermanyFlag
-  : lng === 'ja' ? JapanFlag
-  : lng === 'it' ? ItalyFlag
-  : UsaFlag;
-  const { t } = useTranslation();
-  
+  const { t, i18n } = useTranslation();
+  const lng = i18n.language || "en";
+
+  const flag = lng === "en" ? UsaFlag
+    : lng === "zh" ? ChinaFlag
+    : lng === "hi" ? IndiaFlag
+    : lng === "es" ? SpainFlag
+    : lng === "pt-BR" ? BrazilFlag
+    : lng === "ru" ? RussiaFlag
+    : lng === "fr" ? FranceFlag
+    : lng === "de" ? GermanyFlag
+    : lng === "ja" ? JapanFlag
+    : lng === "it" ? ItalyFlag
+    : UsaFlag;
+
+  const languages = ['en', 'zh', 'hi', 'es', 'pt-BR', 'ru', 'fr', 'de', 'ja', 'it'];
+
   const changeLanguage = () => {
-    const lng = i18n.language;
-    if (lng === 'en') {
-      i18n.changeLanguage('zh');
-    } else if (lng === 'zh') {
-      i18n.changeLanguage('hi');
-    } else if (lng === 'hi') {
-      i18n.changeLanguage('es');
-    } else if (lng === 'es') {
-      i18n.changeLanguage('pt-BR');
-    } else if (lng === 'pt-BR') {
-      i18n.changeLanguage('ru');
-    } else if (lng === 'ru') {
-      i18n.changeLanguage('fr');
-    } else if (lng === 'fr') {
-      i18n.changeLanguage('de');
-    } else if (lng === 'de') {
-      i18n.changeLanguage('ja');
-    } else if (lng === 'ja') {
-      i18n.changeLanguage('it');
-    } else {
-      i18n.changeLanguage('en');
-    }
+    const current = i18n.language;
+    const nextIndex = (languages.indexOf(current) + 1) % languages.length;
+    i18nLocales.changeLanguage(languages[nextIndex]);
   };
 
   const handleChangePassword = async (e: React.FormEvent) => {

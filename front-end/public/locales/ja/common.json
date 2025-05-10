@@ -1,0 +1,112 @@
+{
+    "welcome": "ようこそ",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "forgotPassword": "パスワードを忘れた",
+    "login": "ログイン",
+    "noAccount": "アカウントなし？",
+    "register": "登録",
+    
+    "newAccount": "新しい StarBank アカウント",
+    "repeatPassword": "パスワードを再入力",
+    
+    "titleAboutRegister": "登録について",
+    "aboutRegister": "これは架空の非商業プロジェクトであり、デモンストレーション目的でのみ開発されました。私たちはあなたのプライバシーを尊重し、実際の個人データを処理することはありません。登録すると、プロトタイプの機能を探索するためのテストアカウントが作成されます。実際の取引や金融操作は行われず、機密データは処理されません。機能を自由に閲覧してテストできます。このプロトタイプは教育および説明目的でのみ使用されます。これは実際の銀行サービスではなく、金融商品を提供するものではありません。",
+    
+    "wrongPassword": "パスワードが間違っています。",
+    "userNotFound": "ユーザーが見つかりません。",
+    "sessionExpired": "セッションの有効期限が切れました。",
+    "errorFetchingBalance": "残高の取得中にエラーが発生しました。",
+    "loginError": "ログイン中にエラーが発生しました。",
+    
+    "bothPasswordsMatch": "2つのパスワードが一致する必要があります。",
+    "emailAlreadyRegistered": "メールアドレスは既に登録されています。",
+    "registrationError": "登録中にエラーが発生しました。",
+    
+    "aboutUs": "私たちについて",
+    
+    "account": "アカウント",
+    "home": "ホーム",
+    "transfer": "送金",
+    "loans": "ローン",
+    "stocks": "株式",
+    "historic": "履歴",
+    "settings": "設定",
+    "logout": "ログアウト",
+    
+    "balance": "残高",
+    
+    "amount": "金額",
+    "recipient": "受取人",
+    "message": "メッセージ",
+    
+    "transference": "送金",
+    "receipt": "領収書",
+    "to": "宛先",
+    "from": "送信元",
+    
+    "allFieldsRequired": "すべてのフィールドが必須です。",
+    "transferSuccess": "送金が正常に完了しました。",
+    "transferConflict": "競合のため送金に失敗しました。",
+    "transferInfoError": "送金情報の一部が間違っています。",
+    "transferToSelforInsufficientBalance": "自分自身に送金することはできません、または残高が不足しています。",
+    
+    "titleAboutLoans": "ローンについて",
+    "aboutLoans": "すべてのローンデータは架空のものであり、実際の金融商品を表すものではありません。データはランダムに生成され、実際の情報を反映するものではありません。プロトタイプの機能をテストするためにローンをシミュレートできます。実際の取引や金融操作は行われず、機密データは処理されません。このプロトタイプは教育および説明目的でのみ使用されます。これは実際の銀行サービスではなく、金融商品を提供するものではありません。",
+    "insufficientBalance": "このローンを申請するには残高が不足しています。",
+    "loanRequestedError": "ローン申請中にエラーが発生しました。",
+    "loanRepaymentError": "ローン返済中にエラーが発生しました。",
+    
+    "months": "月",
+    "IR": "金利",
+    "withdraw": "引き出し",
+    "withdrawn": "引き出されました",
+    
+    "DY": "DY |",
+    "buy": "購入",
+    "sell": "売却",
+    
+    "stockQuantity": "株式の数量を選択してください。",
+    "stockBought": "株式が正常に購入されました。",
+    "stockBoughtError": "株式購入中にエラーが発生しました。",
+    "stockSold": "株式が正常に売却されました。",
+    "stockSoldError": "株式売却中にエラーが発生しました。",
+    
+    "titleAboutStocks": "株式について",
+    "aboutStocks": "すべての株式データは架空のものであり、実際の企業や金融商品を表すものではありません。データはランダムに生成され、実際の情報を反映するものではありません。プロトタイプの機能をテストするために株式を購入および売却できます。実際の取引や金融操作は行われず、機密データは処理されません。このプロトタイプは教育および説明目的でのみ使用されます。これは実際の銀行サービスではなく、金融商品を提供するものではありません。",
+    
+    "errorFetchingHistoric": "履歴の取得中にエラーが発生しました。",
+    
+    "changeEmail": "メールアドレスを変更",
+    "changePassword": "パスワードを変更",
+    "resetWallet": "ウォレットをリセット",
+    "deleteAccount": "アカウントを削除",
+    
+    "previousEmail": "以前のメールアドレス",
+    "newEmail": "新しいメールアドレス",
+    "repeatNewEmail": "新しいメールアドレスを再入力",
+    
+    "previousEmailIncorrect": "以前のメールアドレスが正しくありません。",
+    "emailsDontMatch": "メールアドレスが一致しません。",
+    "emailChanged": "メールアドレスが正常に変更されました。",
+    "emailAlreadyInUse": "メールアドレスはすでに使用されています。",
+    "errorChangingEmail": "メールアドレスの変更中にエラーが発生しました。",
+    
+    "newPassword": "新しいパスワード",
+    "repeatNewPassword": "新しいパスワードを再入力",
+    
+    "samePassword": "新しいパスワードは古いパスワードと異なる必要があります。",
+    "passwordChanged": "パスワードが正常に変更されました。",
+    "passwordsDontMatch": "パスワードが一致しません。",
+    "errorChangingPassword": "パスワード変更中またはメールアドレスが間違っています。",
+    
+    "newBalance": "新しい残高",
+    "alertBalance": "*この新しい値は現在の残高を置き換えます。",
+    "errorResettingWallet": "ウォレットのリセット中にエラーが発生しました。",
+    "walletReset": "ウォレットが正常にリセットされました。",
+    
+    "aboutDeleteAccount": "本当にアカウントを削除しますか？すべてのデータが永久に削除されます。この操作は元に戻せず、すべての情報が失われます。",
+    
+    "accountDeleted": "アカウントが正常に削除されました。",
+    "errorDeletingAccount": "アカウントの削除中にエラーが発生しました。"
+}

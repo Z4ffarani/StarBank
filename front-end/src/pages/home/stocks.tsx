@@ -1,9 +1,10 @@
 "use client";
 
-import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 
 import { FaArrowLeft } from "react-icons/fa";
+
+import { useTranslation } from "next-i18next";
 
 import { useStocks } from "../../providers/StocksProvider";
 

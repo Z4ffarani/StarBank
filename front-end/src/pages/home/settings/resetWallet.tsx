@@ -2,13 +2,13 @@ const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8080
 
 import { useState } from 'react';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
 export default function resetWallet() {
   const { t } = useTranslation();
-
+  
   const [addBalance, setAddBalance] = useState<string>('');
 
   const handleResetWallet = async (e: React.FormEvent) => {

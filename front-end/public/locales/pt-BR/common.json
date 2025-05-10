@@ -1,0 +1,112 @@
+{
+    "welcome": "Bem-vindo ao",
+    "email": "E-mail",
+    "password": "Senha",
+    "forgotPassword": "Esqueci minha senha",
+    "login": "Entrar",
+    "noAccount": "Não tem uma conta?",
+    "register": "Cadastrar",
+    
+    "newAccount": "Nova conta StarBank",
+    "repeatPassword": "Repetir senha",
+    
+    "titleAboutRegister": "Sobre o registro",
+    "aboutRegister": "Este é um projeto fictício, não comercial, desenvolvido exclusivamente para fins de demonstração. Sua privacidade é importante para nós e não processamos nenhum dado pessoal real. Ao se registrar, você criará uma conta de teste para explorar os recursos do nosso protótipo. Nenhuma transação real ou operação financeira ocorre, e nenhum dado sensível é processado. Você é livre para navegar e testar as funcionalidades. Este protótipo é apenas para fins educativos e ilustrativos. Não é um serviço bancário real e não oferece produtos financeiros.",
+    
+    "wrongPassword": "Senha incorreta.",
+    "userNotFound": "Usuário não encontrado.",
+    "sessionExpired": "Sessão expirada.",
+    "errorFetchingBalance": "Erro ao buscar o saldo.",
+    "loginError": "Ocorreu um erro ao tentar entrar.",
+    
+    "bothPasswordsMatch": "As duas senhas devem coincidir.",
+    "emailAlreadyRegistered": "E-mail já registrado.",
+    "registrationError": "Ocorreu um erro durante o registro.",
+    
+    "aboutUs": "Sobre nós",
+    
+    "account": "Conta",
+    "home": "Início",
+    "transfer": "Transferência",
+    "loans": "Empréstimos",
+    "stocks": "Ações",
+    "historic": "Histórico",
+    "settings": "Configurações",
+    "logout": "Sair",
+    
+    "balance": "Saldo",
+    
+    "amount": "Valor",
+    "recipient": "Destinatário",
+    "message": "Mensagem",
+    
+    "transference": "Transferência",
+    "receipt": "Recibo",
+    "to": "para",
+    "from": "de",
+    
+    "allFieldsRequired": "Todos os campos são obrigatórios.",
+    "transferSuccess": "Transferência concluída com sucesso.",
+    "transferConflict": "A transferência falhou devido a um conflito.",
+    "transferInfoError": "Alguma informação da transferência está errada.",
+    "transferToSelforInsufficientBalance": "Você não pode transferir para si mesmo ou seu saldo é insuficiente.",
+    
+    "titleAboutLoans": "Sobre os empréstimos",
+    "aboutLoans": "Todos os dados dos empréstimos são fictícios e não representam produtos financeiros reais. Os dados são gerados aleatoriamente e não refletem nenhuma informação do mundo real. Você pode simular empréstimos para testar a funcionalidade do nosso protótipo. Nenhuma transação real ou operação financeira ocorre, e nenhum dado sensível é processado. Este protótipo é apenas para fins educativos e ilustrativos. Não é um serviço bancário real e não oferece produtos financeiros.",
+    "insufficientBalance": "Saldo insuficiente para solicitar este empréstimo.",
+    "loanRequestedError": "Erro ao solicitar o empréstimo.",
+    "loanRepaymentError": "Erro ao pagar o empréstimo.",
+    
+    "months": "meses",
+    "IR": "IR",
+    "withdraw": "Sacar",
+    "withdrawn": "Sacado",
+    
+    "DY": "DY |",
+    "buy": "Comprar",
+    "sell": "Vender",
+    
+    "stockQuantity": "Por favor, escolha uma quantidade de ações.",
+    "stockBought": "Ações compradas com sucesso.",
+    "stockBoughtError": "Erro ao comprar ações.",
+    "stockSold": "Ações vendidas com sucesso.",
+    "stockSoldError": "Erro ao vender ações.",
+    
+    "titleAboutStocks": "Sobre as ações",
+    "aboutStocks": "Todos os dados das ações são fictícios e não representam empresas reais ou produtos financeiros. Os dados são gerados aleatoriamente e não refletem nenhuma informação do mundo real. Você pode comprar e vender ações para testar a funcionalidade do nosso protótipo. Nenhuma transação real ou operação financeira ocorre, e nenhum dado sensível é processado. Este protótipo é apenas para fins educativos e ilustrativos. Não é um serviço bancário real e não oferece produtos financeiros.",
+    
+    "errorFetchingHistoric": "Erro ao buscar o histórico.",
+    
+    "changeEmail": "Alterar e-mail",
+    "changePassword": "Alterar senha",
+    "resetWallet": "Redefinir carteira",
+    "deleteAccount": "Excluir conta",
+    
+    "previousEmail": "E-mail atual",
+    "newEmail": "Novo e-mail",
+    "repeatNewEmail": "Repetir novo e-mail",
+    
+    "previousEmailIncorrect": "E-mail atual incorreto.",
+    "emailsDontMatch": "Os e-mails não coincidem.",
+    "emailChanged": "E-mail alterado com sucesso.",
+    "emailAlreadyInUse": "E-mail já está em uso.",
+    "errorChangingEmail": "Erro ao alterar o e-mail.",
+    
+    "newPassword": "Nova senha",
+    "repeatNewPassword": "Repetir nova senha",
+    
+    "samePassword": "A senha deve ser diferente da antiga.",
+    "passwordChanged": "Senha alterada com sucesso.",
+    "passwordsDontMatch": "As senhas não coincidem.",
+    "errorChangingPassword": "Erro ao alterar a senha ou e-mail incorreto.",
+    
+    "newBalance": "Novo saldo",
+    "alertBalance": "*Este novo valor substituirá o seu saldo atual.",
+    "errorResettingWallet": "Erro ao redefinir a carteira.",
+    "walletReset": "Carteira redefinida com sucesso.",
+    
+    "aboutDeleteAccount": "Tem certeza de que deseja excluir sua conta? Todos os seus dados serão excluídos permanentemente. Esta ação não pode ser desfeita e você perderá todas as suas informações.",
+    
+    "accountDeleted": "Conta excluída com sucesso.",
+    "errorDeletingAccount": "Erro ao excluir a conta."
+}
