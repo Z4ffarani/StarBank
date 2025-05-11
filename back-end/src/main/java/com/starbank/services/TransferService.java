@@ -24,9 +24,9 @@ public class TransferService {
     };
 
     public ResponseEntity<Void> transfer(TransferDTO transfer) {
-        Optional<UserDTO> senderOpt = validateUser();
+        Optional<UserDTO> senderOpt = userService.findByEmail(transfer.getSender());
         if (senderOpt.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         };
 
         UserDTO sender = senderOpt.get();
@@ -37,6 +37,7 @@ public class TransferService {
         };
 
         UserDTO recipient = recipientOpt.get();
+
         if (sender.getBalance() < transfer.getAmount()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         };
@@ -45,13 +46,17 @@ public class TransferService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         };
 
-        transfer.setRecipient(sender.getEmail());
-        transfer.setDate(new Timestamp(System.currentTimeMillis()));
+        if (!sender.getPassword().equals(transfer.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        };
+
+        transfer.setSender(sender.getEmail());
 
         sender.setBalance(sender.getBalance() - transfer.getAmount());
         recipient.setBalance(recipient.getBalance() + transfer.getAmount());
-        
+        transfer.setDate(new Timestamp(System.currentTimeMillis()));
         transfers.add(transfer);
+        
         return ResponseEntity.ok().build();
     };
 

@@ -6,6 +6,7 @@ public class TransferDTO {
     private double amount;
     private String sender;
     private String recipient;
+    private String password;
     private String message;
     private Timestamp date;
 
@@ -27,6 +28,9 @@ public class TransferDTO {
 
     public String getRecipient() { return recipient; };
     public void setRecipient(String recipient) { this.recipient = recipient; };
+
+    public String getPassword() { return password; };
+    public void setPassword(String password) { this.password = password; };
 
     public String getMessage() { return message; };
     public void setMessage(String message) { this.message = message; };

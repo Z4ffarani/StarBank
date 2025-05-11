@@ -4,6 +4,8 @@ import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 
+import { useUserContext } from "../context/UserContext";
+
 interface TransferContextType {
   amount: number;
   recipient: string;
@@ -24,6 +26,8 @@ export const TransferProvider = ({ children }: { children: React.ReactNode }) =>
   const [password, setPassword] = useState<string>('');
   const [message, setMessage] = useState<string>('');
 
+  const { emailContext } = useUserContext();
+
   const { t } = useTranslation();
 
   const handleTransfer = async (e: React.FormEvent) => {
@@ -37,10 +41,12 @@ export const TransferProvider = ({ children }: { children: React.ReactNode }) =>
 
       const response = await axios.put(`${backendUrl}/transfer`, {
         amount,
+        sender: emailContext,
         recipient,
         password,
         message,
       });
+
 
       if (response.status === 200) {
         alert(t('transferSuccess'));
