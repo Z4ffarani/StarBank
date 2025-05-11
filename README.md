@@ -35,29 +35,24 @@ docker compose up
 docker exec -it starbank-front-end-1 sh
 ```
 
-8. In the terminal, install the Node.js modules package:
-```bash
-npm install
-```
-
-9. In the terminal, set the environment to "development" and start the front-end development server:
+8. In the terminal, set the environment to "development" and start the front-end development server:
 ```bash
 NODE_ENV=development npm run dev
 ```
 
-10. Open a new terminal and access the back-end container:
+9. Open a new terminal and access the back-end container:
 ```bash
 docker exec -it starbank-back-end-1 sh
 ```
 
-11. In the terminal, start the back-end development server:
+10. In the terminal, start the back-end development server:
 ```bash
 mvn spring-boot:run
 ```
 
-12. Access the front-end at: **http://localhost:3000**.
+11. Access the front-end at: **http://localhost:3000**.
 
-13. Access the back-end at: **http://localhost:8080**.
+12. Access the back-end at: **http://localhost:8080**.
 
 <br>
 
