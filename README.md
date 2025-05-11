@@ -66,7 +66,7 @@ mvn spring-boot:run
 # OBSERVATIONS
 - Confidential personal information should not be entered into the program.
 
-- The platform has vulnerabilities and is not recommended for production use.
+- The platform has vulnerabilities and is not recommended for business use.
 
 - The platform is designed to handle some errors effectively.
 
