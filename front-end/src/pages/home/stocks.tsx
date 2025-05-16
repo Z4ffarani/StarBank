@@ -38,7 +38,7 @@ export default function Stocks() {
                     </motion.div>
                 </main>
             ) : (
-                <main className="lg:h-[680px] overflow-auto grid grid-cols-1 md:grid-cols-2 pb-[110px] lg:pb-0 mx-[3px] lg:mx-[-3px]">
+                <main className="lg:h-[400px] xl:h-[600px] 2xl:h-[700px] overflow-y-auto grid grid-cols-1 md:grid-cols-2 pb-[110px] lg:pb-0 mx-[3px] lg:mx-[-3px]">
                     {stockList.map(stock => (
                         <motion.div
                             key={stock.name}

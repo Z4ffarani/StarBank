@@ -13,7 +13,7 @@ export default function Loans() {
     const { aboutLoans, handleAboutLoans, handleRequestLoan, remainingMonths } = useLoans();
 
     return (
-        <>
+        <div className="lg:h-[400px] xl:h-[90%] 2xl:h-[700px] overflow-y-auto pb-[140px] lg:pb-0">
             {aboutLoans ?
                 (
                     <main className="select-none">
@@ -36,7 +36,7 @@ export default function Loans() {
                         </motion.div>
                     </main>
                 ) : (
-                    <section className="pb-[140px] lg:pb-5 xl:pb-0 px-5 lg:px-0 gap-6 grid grid-cols-1 md:grid-cols-2 auto-rows-fr">
+                    <section className="pb-[140px] lg:pb-5 xl:pb-0 px-5 lg:px-0 gap-6 grid grid-cols-1 md:grid-cols-2 auto-rows-fr lg:mr-5 xl:mr-0">
                         <motion.div
                             key="loan1"
                             initial={{ opacity: 0}}
@@ -151,6 +151,6 @@ export default function Loans() {
                     </section>
                 )
             }
-        </>
+        </div>
     );
 };

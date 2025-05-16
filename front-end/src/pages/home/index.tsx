@@ -286,7 +286,7 @@ export default function Home() {
         );
       default:
         return (
-          <>
+          <div className="lg:h-[400px] xl:h-[90%] 2xl:h-[700px] overflow-y-auto sm:pb-[140px] xl:pb-0">
             {aboutStocks ? 
               (
                 <main className="select-none">
@@ -329,7 +329,7 @@ export default function Home() {
                   </motion.div>
                 </main>
               ) : (
-                <section className="pb-[140px] g:pb-5 xl:pb-0 px-5 lg:px-0 gap-6 grid grid-cols-1 md:grid-cols-2 auto-rows-fr">
+                <section className="xl:pb-0 px-5 lg:px-0 gap-6 grid grid-cols-1 md:grid-cols-2 auto-rows-fr lg:mr-5 xl:mr-0">
                   {stockList.map(stock => (
                     <motion.div
                       key={stock.name}
@@ -447,7 +447,7 @@ export default function Home() {
                 </section>
               )
             }
-          </>
+          </div>
         );
     };
   };
