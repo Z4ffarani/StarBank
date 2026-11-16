@@ -1,101 +1,83 @@
-![banner](./assets/banner.png)
+![StarBank](./assets/banner.png)
 
-# PROJECT
-Starbank is a prototype of a digital bank that leverages cutting-edge technology to provide the best user experience with simplicity and dynamism. The goal is to make financial routines easier and more efficient, promoting the flow of money. Each client is treated like a star, with everything orbiting in their favor. For this reason, the platform offers practical access through an intelligent menu, multilingual support, and sections dedicated to money transfers, loans, stock investments, history, account settings, all in a single page.
+**[Site](https://starbank.up.railway.app) · [Trailer](https://youtu.be/3rdr3UlUxWI)**
 
-## LINKS:
-- **[Trailer](https://youtu.be/3rdr3UlUxWI)**
+StarBank é o protótipo de um banco digital que aproveita tecnologias de ponta para oferecer a melhor experiência ao usuário, com simplicidade e dinamismo. O objetivo é tornar as rotinas financeiras mais fáceis e eficientes, promovendo a circulação do dinheiro. Cada cliente é tratado como uma estrela, com tudo orbitando a seu favor. Por isso, a plataforma oferece acesso prático por meio de um menu inteligente, suporte a vários idiomas e seções dedicadas a transferências, empréstimos, investimentos em ações, histórico e configurações da conta, tudo em uma única página.
 
-<br>
+---
 
-# INSTRUCTIONS
-1. Install **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**.
+## Arquitetura
 
-2. In the terminal, clone the repository:
+### Front-end
+Interface simples e prática, adaptável a qualquer dispositivo. O sistema é baseado em uma aplicação dinâmica, que usa o arquivo `Layout.tsx` para carregar os componentes em uma única página. O contexto com os dados do usuário é gerenciado pelo arquivo `UserContext.tsx`, enquanto o endereçamento das rotas segue a hierarquia de pastas. A função multilíngue é implementada com a biblioteca **[i18n](https://www.i18next.com)**, que traduz os textos da plataforma a partir de arquivos JSON. As transições suaves vêm da biblioteca **[framer-motion](https://www.npmjs.com/package/framer-motion)** e os ícones especiais da biblioteca **[react-icons](https://react-icons.github.io/react-icons/)**. Algumas funções avançadas de comunicação com o back-end ficam na pasta `providers`, centralizadas no provedor principal `AppProvider.tsx`, o que promove validação extensa de erros e generalização do código. A biblioteca **[Axios](https://axios-http.com/docs/intro)** gerencia as requisições HTTP.
+
+### Back-end
+Implementado seguindo o paradigma orientado a objetos. A configuração web fica no arquivo `WebConfig.java`, que permite a integração com o front-end sem conflitos de CORS. Os endpoints, na pasta `controller`, direcionam as funções específicas da pasta `services`, que por sua vez são validadas com rigor e interagem com os modelos definidos na pasta `DTO`. Esses modelos guardam os dados necessários para executar as tarefas no servidor.
+
+---
+
+## Como executar
+
+### Pré-requisitos
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**
+
+1. Clone o repositório:
 ```bash
-git clone https://github.com/Z4ffarani/starbank.git
+git clone https://github.com/Z4ffarani/StarBank.git
 ```
 
-3. Go to the front-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
+2. Na pasta `front-end`, abra o `Dockerfile`, comente a seção `Production code section` e descomente a seção `Development code section`.
 
-4. Go to the back-end folder, open the `Dockerfile`, comment out the `Production code section`, and uncomment the `Development code section`.
+3. Na pasta `back-end`, abra o `Dockerfile`, comente a seção `Production code section` e descomente a seção `Development code section`.
 
-5. In the terminal, navigate to the project folder:
+4. Na pasta do projeto, crie os contêineres a partir do `docker-compose.yml`:
 ```bash
 cd StarBank
-```
-
-6. In the terminal, create the containers using the `docker-compose.yml` file:
-```bash
 docker compose up
 ```
 
-7. Open a new terminal and access the front-end container:
+5. Em um novo terminal, acesse o contêiner do front-end, defina o ambiente como desenvolvimento e inicie o servidor:
 ```bash
 docker exec -it starbank-front-end-1 sh
-```
-
-8. In the terminal, set the environment to "development" and start the front-end development server:
-```bash
 NODE_ENV=development npm run dev
 ```
 
-9. Open a new terminal and access the back-end container:
+6. Em outro terminal, acesse o contêiner do back-end e inicie o servidor:
 ```bash
 docker exec -it starbank-back-end-1 sh
-```
-
-10. In the terminal, start the back-end development server:
-```bash
 mvn spring-boot:run
 ```
 
-11. Access the front-end at: **http://localhost:3000**.
+Acesse o front-end em `http://localhost:3000` e o back-end em `http://localhost:8080`.
 
-12. Access the back-end at: **http://localhost:8080**.
+---
 
-<br>
+## Observações
 
-# FUNCTIONS
-- **Front-end** | A simple and practical interface, adaptable to any device. The system is based on a dynamic application, using the `Layout.tsx` file to load components on a single page. The user data context window is managed by the `UserContext.tsx` file, while route addressing is structured by folder hierarchy. Multilingual functionality is implemented with the **[i18n](https://www.i18next.com)** library API, enabling text translation on the platform through JSON files. Smooth transitions are provided by the **[framer-motion](https://www.npmjs.com/package/framer-motion)** library. Special icons are supplied by the **[react-icons](https://react-icons.github.io/react-icons/)** library. Some advanced communication functions with the back-end are located in the `providers` folder, centralized in the main provider `AppProvider.tsx`, promoting extensive error validation and code generalization. The **[Axios](https://axios-http.com/docs/intro)** library is used to manage HTTP requests.
+- Não insira informações pessoais confidenciais no programa.
+- A plataforma tem vulnerabilidades e não é recomendada para uso comercial.
+- A plataforma foi projetada para tratar alguns erros de forma eficaz.
+- Este projeto é apenas um protótipo e não deve ser considerado um sistema bancário legal.
+- O saldo exibido é fictício e não tem valor real.
+- StarBank é um nome fictício e não representa uma marca oficial.
+- As ações disponíveis na plataforma são fictícias e não refletem valores reais de mercado.
+- Testes de transferência só podem ser feitos com mais de um usuário cadastrado na plataforma.
+- Os empréstimos não têm descontos na velocidade demonstrada, e os cálculos apresentados são apenas ilustrativos.
+- Empréstimos e ações reais não rendem dinheiro na velocidade demonstrada.
+- Na seção de configurações, é possível alterar o e-mail, a senha e o saldo, e até excluir a conta.
+- Outras bibliotecas e ferramentas também foram usadas no desenvolvimento do projeto.
 
-- **Back-end** | Implemented following the object-oriented paradigm. The web configuration is handled in the `WebConfig.java` file, enabling integration with the front-end without CORS conflicts. Request endpoints, located in the `controller` folder, are responsible for directing specific functions from the `services` folder, which, in turn, are finely validated and interact with the models defined in the `DTO` folder. These models store the data necessary for executing tasks on the server.
+---
 
-<br>
+## Tecnologias
 
-# OBSERVATIONS
-- Confidential personal information should not be entered into the program.
-
-- The platform has vulnerabilities and is not recommended for business use.
-
-- The platform is designed to handle some errors effectively.
-
-- This project is only a prototype and should not be considered a legal banking system.
-
-- The displayed balance is fictional and has no real value.
-
-- StarBank is a fictional name and does not represent an official brand.
-
-- The actions available on the platform are fictional and do not reflect real market values.
-
-- Transfer tests can only be performed if more than one user is registered on the platform.
-
-- Loans do not have discounts at the demonstrated speed, and the calculations presented are purely illustrative.
-
-- Real loans and stocks don’t distribute money at the speed demonstrated.
-
-- It is possible to change the email, password, balance, and even delete the account in the settings section.
-
-- More libraries and tools were used during the development of the project.
-
-<br>
-
-# TECHNOLOGIES
-[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev)
-[![NextJS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/docs/installation)
-[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/en/)
-[![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)](https://spring.io/)
-[![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
-
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white)](https://axios-http.com)
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)](https://www.java.com)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com)
+[![npm](https://img.shields.io/badge/npm-CB3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com)
+[![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)](https://railway.app)
