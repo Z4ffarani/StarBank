@@ -8,7 +8,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 import { motion } from 'framer-motion';
 import axios from 'axios';
 

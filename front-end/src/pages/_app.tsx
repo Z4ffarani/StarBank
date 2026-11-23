@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import Layout from '../components/Layout';
 import { AppProvider } from '../providers/AppProvider';
 
-import { appWithTranslation } from 'next-i18next';
+import '../i18nLocales';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,4 +15,4 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default appWithTranslation(App);
+export default App;

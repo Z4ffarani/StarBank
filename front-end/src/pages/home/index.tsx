@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import i18nLocales from "../../i18nLocales";
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "react-i18next";
 
 import { motion } from "framer-motion";
 import axios from 'axios';
